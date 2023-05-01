@@ -1,0 +1,9 @@
+<h1>Login</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="national_id">National ID:</label>
+        <input type="text" name="national_id" id="national_id"><br>
+        <label for="phone_number">Phone Number:</label>
+        <input type="text" name="phone_number" id="phone_number"><br>
+        <input type="submit" value="Login">
+    </form>
