@@ -8,7 +8,7 @@ def register(request):
         form = RegistrationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            profile = UserProfile(user=user, name=form.cleaned_data['name'], phone_number=form.cleaned_data['phone_number'], national_id=form.cleaned_data['national_id'])
+            profile = UserProfile(user=user, name=form.cleaned_data['name'], phone_number=form.cleaned_data['phone_number'], national_id=form.cleaned_data['national_id'],vaccine_type = form.cleaned_data['vaccine_type'],governrate=form.cleaned_data['governrate'])
             profile.save()
             return redirect('login')
     else:
@@ -42,4 +42,4 @@ from django.shortcuts import render
 @login_required
 def profile(request):
     user_profile = UserProfile.objects.get(user=request.user)
-    return render(request, 'profile.html', {'user_profile': user_profile})
+    return render(request, 'register/profile.html', {'user_profile': user_profile})
