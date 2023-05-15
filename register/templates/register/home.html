@@ -1,6 +1,8 @@
 <html>
+    {% csrf_token %}
     <body>
-        Welcome to the Vaccine management system
+        <h2>        Welcome to the Vaccine management system
+            <h2>
         <div>
         <a href="{% url 'register' %}">register</a>
         <a href="{% url 'login' %}">login</a>
