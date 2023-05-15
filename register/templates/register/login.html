@@ -132,16 +132,16 @@ a{
         <div class="shape"></div>
         <div class="shape"></div>
     </div>
-    <form>
+    <form method="post">
+        {% csrf_token %}
+
         <h3> Login </h3>
 
-        <label for="username">Username</label>
-        <input type="text" placeholder="Username" id="username">
-
-        <label for="password">Password</label>
-        <input type="password" placeholder="Password" id="password">
-
-        <button>Log In</button>
+        <label for="national_id">Username:</label>
+        <input type="text" name="username" id="username"><br>
+        <label for="phone_number">Password:</label>
+        <input type="password" name="password" id="password"><br>
+        <input type="submit" value="Login">
         <div class="social">
         <a 
         href="./index.html">   Don't have an account? Register!
