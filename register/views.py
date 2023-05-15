@@ -43,3 +43,10 @@ from django.shortcuts import render
 def profile(request):
     user_profile = UserProfile.objects.get(user=request.user)
     return render(request, 'register/profile.html', {'user_profile': user_profile})
+
+
+
+
+
+def home(request):
+    return render(request,'register/home.html')
