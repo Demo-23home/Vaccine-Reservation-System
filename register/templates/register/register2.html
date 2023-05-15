@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title>SAVR Registration Form</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <div class="container">
+      <div class="title">Registration</div>
+      <div class="content">
+        <form action="#" method="POST">
+          {% csrf_token %}
+          <div class="user-details">
+            <div class="input-box">
+              <span class="details">Full Name</span>
+              {{ form.full_name }}
+            </div>
+            <div class="input-box">
+              <span class="details">Username</span>
+              {{ form.username }}
+            </div>
+            <div class="input-box">
+              <span class="details">National ID</span>
+              {{ form.national_id }}
+            </div>
+            <div class="input-box">
+              <span class="details">Phone Number</span>
+              {{ form.phone_number }}
+            </div>
+            <div class="input-box">
+              <span class="details">Password</span>
+              {{ form.password }}
+            </div>
+            <div class="input-box">
+              <span class="details">Confirm Password</span>
+              {{ form.confirm_password }}
+            </div>
+            <div class="input-box">
+              <span class="details">Vaccine Type</span>
+              {{ form.vaccine_type }}
+            </div>
+            <div class="input-box">
+              <span class="details">Governorate</span>
+              {{ form.governorate }}
+            </div>
+            <div class="input-box">
+              <span class="details">Date of Birth</span>
+              {{ form.date_of_birth }}
+            </div>
+          </div>
+          <div class="button">
+            {{ form.submit }}
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
