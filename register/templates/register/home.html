@@ -1,11 +1,48 @@
-<html>
-    {% csrf_token %}
-    <body>
-        <h2>        Welcome to the Vaccine management system
-            <h2>
-        <div>
-        <a href="{% url 'register' %}">register</a>
-        <a href="{% url 'login' %}">login</a>
-        </div>
-    </body>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Smart AVR</title>
+  <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<header>
+	<h4>S-AVR</h4> <p></p>
+	<p><a href="{% url 'login' %}" style="color: white; text-decoration: none;">login</a></p>
+	<p><a href="{% url 'register' %}" style="color: white; text-decoration: none;">register</a></p>
+</header>
+<div class="container">
+
+	<div class="panel">
+		<div class="front"></div>
+		<div class="back"></div>
+	</div>
+	<div class="panel">
+		<div class="front"></div>
+		<div class="back"></div>
+	</div>
+	<div class="panel">
+		<div class="front"></div>
+		<div class="back"></div>
+	</div>
+	<div class="panel">
+		<div class="front"></div>
+		<div class="back"></div>
+	</div>
+</div>
+<div class="layer">
+	<h1>WE<span>ARE</span>SAVR</h1>
+
+</div>
+<footer>
+	<div class="replay">REPLAY</div>
+
+</footer>
+<!-- partial -->
+  <script src='https://unpkg.co/gsap@3/dist/gsap.min.js'></script><script  src="{% static 'js/script.js' %}"></script>
+
+</body>
 </html>
