@@ -1,6 +1,46 @@
-<h1>Profile</h1>
-    <p>Name: {{ user_profile.name }}</p>
-    <p>Phone number: {{ user_profile.phone_number }}</p>
-    <p>National ID: {{ user_profile.national_id }}</p>
-    <p>vaccine type: {{ user_profile.vaccine_type }}</p>
-    <p>Governrate: {{ user_profile.governrate }}</p>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title> SAVR Profile </title>
+    <link rel="stylesheet" href="{% static 'css/Profilestyle.css' %}">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+  <div class="container">
+    <div class="title">Profile</div>
+    <div class="content">
+      <form action="#">
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">Full Name</span>
+            <div class="text">{{ user_profile.name }}</div>
+          </div>
+          <div class="input-box">
+            <span class="details">Username</span>
+            <div class="text"> {{ user_profile.user }} </div>
+          </div>
+          <div class="input-box">
+            <span class="details">National ID</span>
+            <div class="text"> {{ user_profile.national_id }} </div>         
+           </div>
+          <div class="input-box">
+            <span class="details">Phone Number</span>
+            <div class="text"> {{ user_profile.phone_number }} </div>
+           </div>
+          <div class="input-box">
+            <span class="details">Vaccine Type</span>
+            <div class="text"> {{ user_profile.vaccine_type }} </div>
+          </div>
+          <div class="input-box">
+            <span class="details">Governorate</span>
+            <div class="text"> {{ user_profile.governrate }} </div>       
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>
