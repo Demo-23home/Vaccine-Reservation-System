@@ -1,12 +1,12 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="UTF-8">
-    <title> SAVR Registration Form </title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   </head>
+<head>
+  <meta charset="UTF-8">
+  <title>SAVR Registration Form</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
 <body>
   <div class="container">
     <div class="title">Registration</div>
@@ -17,38 +17,101 @@
           <div class="input-box">
             <span class="details">Full Name</span>
             {{ form.name }}
+            {% if form.name.errors %}
+              <ul class="errorlist">
+                {% for error in form.name.errors %}
+                  <li>{{ error }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
           </div>
           <div class="input-box">
             <span class="details">Username</span>
             {{ form.username }}
+            {% if form.username.errors %}
+              <ul class="errorlist">
+                {% for error in form.username.errors %}
+                  <li>{{ error }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
           </div>
           <div class="input-box">
             <span class="details">National ID</span>
             {{ form.national_id }}
+            {% if form.national_id.errors %}
+              <ul class="errorlist">
+                {% for error in form.national_id.errors %}
+                  <li>{{ error }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
           </div>
           <div class="input-box">
             <span class="details">Phone Number</span>
             {{ form.phone_number }}
+            {% if form.phone_number.errors %}
+              <ul class="errorlist">
+                {% for error in form.phone_number.errors %}
+                  <li>{{ error }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
           </div>
           <div class="input-box">
             <span class="details">Password</span>
             {{ form.password1 }}
+            {% if form.password1.errors %}
+              <ul class="errorlist">
+                {% for error in form.password1.errors %}
+                  <li>{{ error }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
           </div>
           <div class="input-box">
             <span class="details">Confirm Password</span>
             {{ form.password2 }}
+            {% if form.password2.errors %}
+              <ul class="errorlist">
+                {% for error in form.password2.errors %}
+                  <li>{{ error }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
           </div>
           <div class="input-box">
             <span class="details">Vaccine Type</span>
             {{ form.vaccine_type }}
+            {% if form.vaccine_type.errors %}
+              <ul class="errorlist">
+                {% for error in form.vaccine_type.errors %}
+                  <li>{{ error }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
           </div>
           <div class="input-box">
             <span class="details">Governorate</span>
             {{ form.governrate }}
+            {% if form.governrate.errors %}
+              <ul class="errorlist">
+                {% for error in form.governrate.errors %}
+                  <li>{{ error }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
           </div>
           <div class="input-box">
             <span class="details">Date of Birth</span>
             {{ form.date_of_birth }}
+            {% if form.date_of_birth.errors %}
+              <ul class="errorlist">
+                {% for error in form.date_of_birth.errors %}
+                  <li>{{ error }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
           </div>
         </div>
         <div class="button">

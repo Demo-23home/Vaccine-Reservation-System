@@ -6,17 +6,36 @@ from datetime import datetime, timedelta
 import random
 
 
+from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
+
 def register(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():
+            national_id = form.cleaned_data['national_id']
+            phone_number = form.cleaned_data['phone_number']
+
+            # Check length of national ID
+            if len(national_id) != 14:
+                error_message = 'National ID must be exactly 14 characters.'
+                form.add_error('national_id', error_message)
+                return render(request, 'register/register.html', {'form': form})
+
+            # Check length of phone number
+            if len(phone_number) != 10:
+                error_message = 'Phone number must be exactly 10 digits.'
+                form.add_error('phone_number', error_message)
+                return render(request, 'register/register.html', {'form': form})
+
             user = form.save()
-            profile = UserProfile(user=user, name=form.cleaned_data['name'], phone_number=form.cleaned_data['phone_number'], national_id=form.cleaned_data['national_id'],vaccine_type = form.cleaned_data['vaccine_type'],governrate=form.cleaned_data['governrate'])
+            profile = UserProfile(user=user, name=form.cleaned_data['name'], phone_number=phone_number, national_id=national_id, vaccine_type=form.cleaned_data['vaccine_type'], governrate=form.cleaned_data['governrate'])
             profile.save()
             return redirect('login')
     else:
         form = RegistrationForm()
     return render(request, 'register/register.html', {'form': form})
+
 
 
 from django.contrib.auth import authenticate, login

@@ -18,7 +18,7 @@ class RegistrationForm(UserCreationForm):
         ('Alexandria', 'Alexandria'),
         ('Luxor', 'Luxor'),
         ('Aswan', 'Aswan'),
-        ('Mansoura', 'Mansoura'),
+        ('Dakahlia', 'Dakahlia'),
         ('Damietta', 'Damietta'),
     ]
     
