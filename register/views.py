@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 from .forms import RegistrationForm
 from .models import UserProfile
+from datetime import datetime, timedelta
+import random
+
 
 def register(request):
     if request.method == 'POST':
@@ -42,7 +45,16 @@ from django.shortcuts import render
 @login_required
 def profile(request):
     user_profile = UserProfile.objects.get(user=request.user)
-    return render(request, 'register/profile.html', {'user_profile': user_profile})
+    if 'future_date' not in request.session:
+        today = datetime.now().date()
+        max_days = (today.replace(day=1) + timedelta(days=32)).replace(day=1) - today
+        future_date = today + timedelta(days=random.randint(1, max_days.days))
+        request.session['future_date'] = future_date.strftime('%Y-%m-%d')
+    else:
+        future_date = datetime.strptime(request.session['future_date'], '%Y-%m-%d').date()
+    return render(request, 'register/profile.html', {'user_profile': user_profile,
+                                                     'date':future_date,
+                                                     })
 
 
 
