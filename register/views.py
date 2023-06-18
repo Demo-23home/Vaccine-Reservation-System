@@ -13,6 +13,13 @@ def register(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():
+            password1 = form.cleaned_data['password1']
+            password2 = form.cleaned_data['password2']
+
+            if password1 != password2:
+                form.add_error('password2', 'Passwords do not match.')
+                return render(request, 'register/register.html', {'form': form})
+
             national_id = form.cleaned_data['national_id']
             phone_number = form.cleaned_data['phone_number']
 
@@ -23,8 +30,8 @@ def register(request):
                 return render(request, 'register/register.html', {'form': form})
 
             # Check length of phone number
-            if len(phone_number) != 10:
-                error_message = 'Phone number must be exactly 10 digits.'
+            if len(phone_number) != 11:
+                error_message = 'Phone number must be exactly 11 digits.'
                 form.add_error('phone_number', error_message)
                 return render(request, 'register/register.html', {'form': form})
 
@@ -35,6 +42,7 @@ def register(request):
     else:
         form = RegistrationForm()
     return render(request, 'register/register.html', {'form': form})
+
 
 
 
@@ -66,7 +74,7 @@ def profile(request):
     user_profile = UserProfile.objects.get(user=request.user)
     if 'future_date' not in request.session:
         today = datetime.now().date()
-        max_days = (today.replace(day=1) + timedelta(days=32)).replace(day=1) - today
+        max_days = (today.replace(day=1) + timedelta(days=92)).replace(day=1) - today
         future_date = today + timedelta(days=random.randint(1, max_days.days))
         request.session['future_date'] = future_date.strftime('%Y-%m-%d')
     else:

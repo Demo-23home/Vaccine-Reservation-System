@@ -62,12 +62,13 @@
             <span class="details">Password</span>
             {{ form.password1 }}
             {% if form.password1.errors %}
-              <ul class="errorlist">
-                {% for error in form.password1.errors %}
-                  <li>{{ error }}</li>
-                {% endfor %}
-              </ul>
+            <ul class="errorlist">
+              {% for error in form.password1.errors %}
+              <li>{{ error }}</li>
+              {% endfor %}
+            </ul>
             {% endif %}
+            <p class="note">Password must contain Capital letter,Number,Special key('@','#','$').</p>
           </div>
           <div class="input-box">
             <span class="details">Confirm Password</span>
@@ -113,6 +114,7 @@
               </ul>
             {% endif %}
           </div>
+          <p class="note">Please note that the vaccination process may take tiem up to 3 months.</p>
         </div>
         <div class="button">
           <input type="submit" value="Register">
